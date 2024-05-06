@@ -1,0 +1,97 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+@model List<Category>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/fcc604771a.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: monospace;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <div class=".flex-row">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Mr. Computer</a>
+        
+                    <a asp-controller="Login" asp-action="Logout" class=" btn btn-danger">Logout</a>
+           
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <h2 class"m-4">Welcome to Our Category </h2>
+            
+             <a asp-controller="Category" asp-action="Add" class="btn btn-primary" >ADD Category</a>
+            <form asp-controller="Login" asp-action="Search" method="get">
+                <lable >Search of Category</lable>
+                <input  type="search" name="searchval"/>
+                <input  type="submit" value="Search" class="btn btn-primary"/>
+            
+            </form>
+
+
+            <table class="table table-striped font-weight-bold">
+                <tr>
+                    <th>ID</th>
+                    <th>Category Name</th>
+                    <th>view Product</th>
+                  
+                </tr>
+                @foreach(var c in Model)
+                {
+                    <tr class="m-3">
+                        <td>@c.Idcategory</td>
+                        <td>@c.Namecategory</td>
+                        <td><a asp-controller="Category" asp-action="ViewProduct" asp-route-id="@c.Idcategory">View Product</a></td>
+                        
+                    </tr>
+                }
+
+            </table>
+            
+           
+         
+        </main>
+        <a asp-controller="Login" asp-action="BackToCategory" class="btn btn-primary"> Back To Category</a>
+    </div>
+
+    <!--FOOTER-->
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a asp-controller="Home" asp-action="Index" class="nav-link px-2 text-muted m-2">Home</a></li>
+                <li class="nav-item"><a asp-controller="Home" asp-action="About" class="nav-link px-2 text-muted m-2">About</a></li>
+                <li class="nav-item"><a asp-controller="Home" asp-action="ContactUs" class="nav-link px-2 text-muted m-2">Contact Us</a></li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2023 Mr. Computer</p>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
+

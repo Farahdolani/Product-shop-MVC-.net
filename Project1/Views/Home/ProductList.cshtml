@@ -1,0 +1,22 @@
+﻿@model List<Product>
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewData["Title"] = "List of Products";
+}
+<h2>Welcome to Product List </h2>
+
+<div class="row">
+    @foreach (var prod in Model)
+    {
+        <div class="card m-4" style="width: 18rem;">
+            <img src="../images/@prod.ProductDescription" style="height: 200px; width:18rem;" class="card-img-top" alt="electronic_device">
+            <div class="card-body">
+                <h5 class="card-title text-primary font-weight-bold ">@prod.ProductName</h5>
+                <p class="card-text text-success">$ @prod.ProducrPrise </p>
+                <a asp-controller="Product" asp-action="ShowDetails" asp-route-id="@prod.ProductId" class="btn btn-primary">Show details</a>
+            </div>
+        </div>
+    }
+</div>

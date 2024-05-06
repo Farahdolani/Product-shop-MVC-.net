@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Product
+
+
+@{
+ViewBag.title="Edit Product";
+}
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" asp-controller="Product" method="post">
+<div asp-validation-summary="All" class="text-danger">
+</div>
+
+<input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
+<div class="form-group">
+<label asp-for="ProductName">ProductName</label>
+<input asp-for="ProductName" value="@Model.ProductName" class="form-control">
+</div>
+
+    <div class="form-group">
+        <label asp-for="ProducrPrise">Product Price</label>
+        <input asp-for="ProducrPrise" value="@Model.ProducrPrise" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductDescription">ProductDescription</label>
+        <img src="../../images/@Model.ProductDescription" /> 
+        <br />
+        <input type="file" asp-for="ProductDescription" /> <br />
+
+
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-controller="Login" asp-action="BackToCategory">Cancel</a>
+
+</form>
